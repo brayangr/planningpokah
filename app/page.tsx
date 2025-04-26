@@ -1,4 +1,7 @@
+'use client';
+
 import Image from "next/image";
+import VoteSelector from "@/components/VoteSelector";
 
 export default function Home() {
   return (
@@ -98,6 +101,7 @@ export default function Home() {
           Go to nextjs.org →
         </a>
       </footer>
+      <VoteSelector />
     </div>
   );
 }
