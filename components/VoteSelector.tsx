@@ -1,18 +1,21 @@
+import { useState } from "react";
 import Card from "./Card";
 
-export default function VoteSelector() {
+interface VoteSelectorProps {
+  votingScale: Array<String>;
+}
+
+export default function VoteSelector({ votingScale }: VoteSelectorProps) {
+  const [selectedValue, setSelectedValue] = useState<String>("");
+
   const handleClick = (value: String) => {
-    console.log("click", value)
+    setSelectedValue(value)
   }
 
   return(
     <div>
-      <div className="columns-5">
-        <Card onClick={handleClick} value={"1"}/>
-        <Card onClick={handleClick} value={"2"}/>
-        <Card onClick={handleClick} value={"3"}/>
-        <Card onClick={handleClick} value={"4"}/>
-        <Card onClick={handleClick} value={"5"}/>
+      <div className="flex gap-4">
+        {votingScale.map(value => <Card key={value} onClick={handleClick} value={value} selected={value == selectedValue}/>)}
       </div>
     </div>
   )
